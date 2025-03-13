@@ -16,6 +16,8 @@ type Log struct {
 	Path string
 }
 
+const DEFAULT_PATH string = "tmp/logs"
+
 func New(Path ...string) *Log {
 
 	var log *Log
@@ -23,7 +25,7 @@ func New(Path ...string) *Log {
 	if len(Path) > 0 {
 		log = &Log{Path: Path[0]}
 	} else {
-		log = &Log{Path: "/tmp/logs/"}
+		log = &Log{Path: DEFAULT_PATH}
 	}
 
 	return log.Init()
