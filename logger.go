@@ -4,14 +4,20 @@ import "github.com/golamee/logger/log"
 
 var l *log.Log
 
+func Default() *log.Log {
+	return log.New()
+}
+
 func NewLog(Path ...string) *log.Log {
 	return log.New(Path...)
 }
 
-func Init(Path ...string) *log.Log {
-	l = log.New(Path...)
+func init() {
+	Init()
+}
 
-	return l
+func Init(Path ...string) {
+	l = log.New(Path...)
 }
 
 func Info(Format string, v ...any) {
